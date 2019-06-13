@@ -22,6 +22,6 @@
             </intent-filter>
         </activity>
 
+    <activity android:name=".ChangeCityController"></activity>
     </application>
-
 </manifest>

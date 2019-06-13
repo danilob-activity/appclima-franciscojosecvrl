@@ -37,6 +37,8 @@ public class WeatherController extends AppCompatActivity {
     ImageView mWeatherImage;
     TextView mTemperatureLabel;
 
+
+
     // TODO: Declare a LocationManager and a LocationListener here:
 
 
@@ -115,12 +117,24 @@ public class WeatherController extends AppCompatActivity {
 
 
 
+
     // TODO: Add updateUI() here:
+    private void updateUI(WeatherDataModel weatherData) {
+        mCityLabel.setText(weatherData.getCity());
+        mTemperatureLabel.setText(weatherData.getTemperature());
+        int resourceID =
+                getResources().getIdentifier(weatherData.getIconName(), "drawable", getPackageName(
+                ));
+        mWeatherImage.setImageResource(resourceID);
+    }
 
 
 
     // TODO: Add onPause() here:
+    protected void onPause() {
+        super.onPause();
+        if (mLocationManager != null) mLocationManager.removeUpdates(mLocationListener);
 
-
+    }
 
 }
